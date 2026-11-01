@@ -30,7 +30,6 @@ import (
 	"time"
 
 	openapi_v2 "github.com/google/gnostic-models/openapiv2"
-	"google.golang.org/protobuf/proto"
 
 	apidiscoveryv2 "k8s.io/api/apidiscovery/v2"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -1184,7 +1183,7 @@ func (d *DiscoveryClient) OpenAPISchemaWithContext(ctx context.Context) (*openap
 		return nil, err
 	}
 	document := &openapi_v2.Document{}
-	err = proto.Unmarshal(data, document)
+	err = document.UnmarshalVT(data)
 	if err != nil {
 		return nil, err
 	}

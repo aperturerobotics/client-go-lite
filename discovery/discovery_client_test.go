@@ -30,7 +30,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	golangproto "google.golang.org/protobuf/proto"
 
 	apidiscovery "k8s.io/api/apidiscovery/v2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -538,7 +537,7 @@ func openapiSchemaFakeServer(t *testing.T) (*httptest.Server, error) {
 			return
 		}
 
-		output, err := golangproto.Marshal(returnedOpenAPI())
+		output, err := returnedOpenAPI().MarshalVT()
 		if err != nil {
 			errMsg := fmt.Sprintf("Unexpected marshal error: %v", err)
 			w.WriteHeader(http.StatusInternalServerError)
@@ -573,7 +572,7 @@ func TestGetOpenAPISchema(t *testing.T) {
 	if err != nil {
 		t.Fatalf("unexpected error getting openapi: %v", err)
 	}
-	if e, a := returnedOpenAPI(), got; !golangproto.Equal(e, a) {
+	if e, a := returnedOpenAPI(), got; !e.EqualVT(a) {
 		t.Errorf("expected \n%v, got \n%v", e, a)
 	}
 }
@@ -632,7 +631,7 @@ func TestGetOpenAPISchemaV3(t *testing.T) {
 						t.Fatal(err)
 					}
 
-					expectedPB, err := golangproto.Marshal(expectedGnostic)
+					expectedPB, err := expectedGnostic.MarshalVT()
 					if err != nil {
 						t.Fatal(err)
 					}

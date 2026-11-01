@@ -22,7 +22,6 @@ require (
 	golang.org/x/oauth2 v0.37.0
 	golang.org/x/term v0.47.0
 	golang.org/x/time v0.16.0
-	google.golang.org/protobuf v1.36.12
 	gopkg.in/evanphx/json-patch.v4 v4.13.0
 	k8s.io/api v0.0.0-20261029185254-a44a025f6087
 	k8s.io/apimachinery v0.0.0-20261029183838-a669714d5f6b
@@ -38,6 +37,8 @@ require (
 )
 
 require (
+	github.com/aperturerobotics/json-iterator-lite v1.1.0 // indirect
+	github.com/aperturerobotics/protobuf-go-lite v0.19.1-0.20261028131920-f644656fc4a7 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/fxamacker/cbor/v2 v2.9.4 // indirect
 	github.com/go-openapi/jsonpointer v1.0.2 // indirect
@@ -57,3 +58,7 @@ require (
 	golang.org/x/text v0.43.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 )
+
+replace github.com/google/gnostic-models => github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101172338-f2740e98f265
+
+replace k8s.io/kube-openapi => github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101172500-c434763c426b
