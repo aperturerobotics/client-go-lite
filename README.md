@@ -12,10 +12,11 @@ unsafe pointer casts. Conversion between slices of distinct element types
 copies the elements; other converted pointers and containers retain their
 original sharing behavior.
 
-The fake client implementations and testing package, generated informers and
-listers, metadata clients, examples, generators, scripts and upstream automation
-are omitted. Tests requiring removed helper packages and their fixtures are
-omitted as well. The remaining tests exercise the retained packages.
+Fake discovery, dynamic, typed, REST and scale clients, their testing helpers,
+and the embedded OpenAPI fixtures remain solely to support dependency tests
+and module tidying. Generated informers and listers, metadata clients, examples,
+generators, scripts and upstream automation are omitted. The retained tests
+exercise the runtime packages.
 
 Generic JSONPath, kubeconfig merging and redaction, runtime object inspection,
 cache diagnostics and credential comparisons still use reflection. JSON, YAML,

@@ -2,8 +2,8 @@ github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101174401-df56aa581c
 github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101174401-df56aa581c7f/go.mod h1:v4nOw2cMJOUwUsJOliDh9+y7yB8mQp786028wKFjhQY=
 github.com/aperturerobotics/json-iterator-lite v1.1.0 h1:ZLLqHhHTKYlmCAP873ras2e/yVU/THtwC+ji3tXLMMg=
 github.com/aperturerobotics/json-iterator-lite v1.1.0/go.mod h1:SvGGBv3OVxUyqO0ZxA/nvs6z3cg7NIbZ64TnbV2OISo=
-github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101174642-7a6593583cfd h1:VCIRKUpENwlw5dBduiN/1S9pLWg4/tSH2JVruU43r7c=
-github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101174642-7a6593583cfd/go.mod h1:bv9nZudfGUVz+36bi3nHuG2jIlKiTFkSf5bf5D0Bu30=
+github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101175358-40d512f0845d h1:P1376djhpyx45oGGuRhbQYwFfwsXH6hFFpdaA9Uw3uU=
+github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101175358-40d512f0845d/go.mod h1:bv9nZudfGUVz+36bi3nHuG2jIlKiTFkSf5bf5D0Bu30=
 github.com/aperturerobotics/protobuf-go-lite v0.19.1-0.20261028131920-f644656fc4a7 h1:LQ9mNU1oDicw/X5TAYcL7BVWtvdtCifGQ0iETHEjlC8=
 github.com/aperturerobotics/protobuf-go-lite v0.19.1-0.20261028131920-f644656fc4a7/go.mod h1:OoWp0DqYDPOCFHswO/z3H9jgEmDOwPJxxR9Meosb5zQ=
 github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5 h1:0CwZNZbxp69SHPdPJAN/hZIm0C4OItdklCFmMRWYpio=
