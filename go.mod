@@ -1,5 +1,3 @@
-// This is a generated file. Do not edit directly.
-
 module k8s.io/client-go
 
 go 1.27.0
@@ -10,14 +8,12 @@ require (
 	github.com/go-logr/logr v1.4.4
 	github.com/google/gnostic-models v0.7.1
 	github.com/google/go-cmp v0.7.0
-	github.com/google/uuid v1.6.0
 	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
 	github.com/onsi/gomega v1.44.0
 	github.com/peterbourgon/diskv/v3 v3.0.1
 	github.com/spf13/pflag v1.0.10
 	github.com/stretchr/testify v1.12.1
-	go.uber.org/goleak v1.3.0
 	golang.org/x/net v0.61.0
 	golang.org/x/oauth2 v0.37.0
 	golang.org/x/term v0.47.0
@@ -30,10 +26,7 @@ require (
 	k8s.io/kube-openapi v0.0.0-20261014044854-ca3452a79603
 	k8s.io/streaming v0.0.0-20261023231301-c83a32ac951b
 	k8s.io/utils v0.0.0-20260626114624-be93311217bd
-	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730
-	sigs.k8s.io/randfill v1.0.0
 	sigs.k8s.io/structured-merge-diff/v7 v7.0.1
-	sigs.k8s.io/yaml v1.6.0
 )
 
 require (
@@ -48,17 +41,20 @@ require (
 	github.com/go-openapi/swag/pools v0.29.2 // indirect
 	github.com/go-openapi/swag/typeutils v0.29.2 // indirect
 	github.com/google/btree v1.1.3 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/moby/spdystream v0.5.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/stretchr/objx v0.5.3 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/text v0.43.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
+	sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730 // indirect
+	sigs.k8s.io/randfill v1.0.0 // indirect
+	sigs.k8s.io/yaml v1.6.0 // indirect
 )
 
-replace github.com/google/gnostic-models => github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101172338-f2740e98f265
+replace github.com/google/gnostic-models => github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101174401-df56aa581c7f
 
-replace k8s.io/kube-openapi => github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101172500-c434763c426b
+replace k8s.io/kube-openapi => github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101174642-7a6593583cfd

@@ -22,8 +22,6 @@ limitations under the License.
 package v1
 
 import (
-	unsafe "unsafe"
-
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	clientauthentication "k8s.io/client-go/pkg/apis/clientauthentication"
@@ -83,7 +81,7 @@ func autoConvert_v1_Cluster_To_clientauthentication_Cluster(in *Cluster, out *cl
 	out.Server = in.Server
 	out.TLSServerName = in.TLSServerName
 	out.InsecureSkipTLSVerify = in.InsecureSkipTLSVerify
-	out.CertificateAuthorityData = *(*[]byte)(unsafe.Pointer(&in.CertificateAuthorityData))
+	out.CertificateAuthorityData = in.CertificateAuthorityData
 	out.ProxyURL = in.ProxyURL
 	out.DisableCompression = in.DisableCompression
 	if err := runtime.Convert_runtime_RawExtension_To_runtime_Object(&in.Config, &out.Config, s); err != nil {
@@ -101,7 +99,7 @@ func autoConvert_clientauthentication_Cluster_To_v1_Cluster(in *clientauthentica
 	out.Server = in.Server
 	out.TLSServerName = in.TLSServerName
 	out.InsecureSkipTLSVerify = in.InsecureSkipTLSVerify
-	out.CertificateAuthorityData = *(*[]byte)(unsafe.Pointer(&in.CertificateAuthorityData))
+	out.CertificateAuthorityData = in.CertificateAuthorityData
 	out.ProxyURL = in.ProxyURL
 	out.DisableCompression = in.DisableCompression
 	if err := runtime.Convert_runtime_Object_To_runtime_RawExtension(&in.Config, &out.Config, s); err != nil {
@@ -119,7 +117,7 @@ func autoConvert_v1_ExecCredential_To_clientauthentication_ExecCredential(in *Ex
 	if err := Convert_v1_ExecCredentialSpec_To_clientauthentication_ExecCredentialSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	out.Status = (*clientauthentication.ExecCredentialStatus)(unsafe.Pointer(in.Status))
+	out.Status = (*clientauthentication.ExecCredentialStatus)(in.Status)
 	return nil
 }
 
@@ -132,7 +130,7 @@ func autoConvert_clientauthentication_ExecCredential_To_v1_ExecCredential(in *cl
 	if err := Convert_clientauthentication_ExecCredentialSpec_To_v1_ExecCredentialSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	out.Status = (*ExecCredentialStatus)(unsafe.Pointer(in.Status))
+	out.Status = (*ExecCredentialStatus)(in.Status)
 	return nil
 }
 
@@ -180,7 +178,7 @@ func Convert_clientauthentication_ExecCredentialSpec_To_v1_ExecCredentialSpec(in
 }
 
 func autoConvert_v1_ExecCredentialStatus_To_clientauthentication_ExecCredentialStatus(in *ExecCredentialStatus, out *clientauthentication.ExecCredentialStatus, s conversion.Scope) error {
-	*out = *(*clientauthentication.ExecCredentialStatus)(unsafe.Pointer(in))
+	*out = clientauthentication.ExecCredentialStatus(*in)
 	return nil
 }
 
@@ -190,7 +188,7 @@ func Convert_v1_ExecCredentialStatus_To_clientauthentication_ExecCredentialStatu
 }
 
 func autoConvert_clientauthentication_ExecCredentialStatus_To_v1_ExecCredentialStatus(in *clientauthentication.ExecCredentialStatus, out *ExecCredentialStatus, s conversion.Scope) error {
-	*out = *(*ExecCredentialStatus)(unsafe.Pointer(in))
+	*out = ExecCredentialStatus(*in)
 	return nil
 }
 

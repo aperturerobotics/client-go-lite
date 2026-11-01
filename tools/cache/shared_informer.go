@@ -1196,23 +1196,6 @@ type sharedProcessor struct {
 	wg        wait.Group
 }
 
-func (p *sharedProcessor) getListener(registration ResourceEventHandlerRegistration) *processorListener {
-	p.listenersLock.RLock()
-	defer p.listenersLock.RUnlock()
-
-	if p.listeners == nil {
-		return nil
-	}
-
-	if result, ok := registration.(*processorListener); ok {
-		if _, exists := p.listeners[result]; exists {
-			return result
-		}
-	}
-
-	return nil
-}
-
 func (p *sharedProcessor) addListener(listener *processorListener) (ResourceEventHandlerRegistration, bool) {
 	p.listenersLock.Lock()
 	defer p.listenersLock.Unlock()

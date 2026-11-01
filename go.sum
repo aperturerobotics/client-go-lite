@@ -1,9 +1,9 @@
-github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101172338-f2740e98f265 h1:Qo4x6t7/fDtPEN4usABl0/hQ0VrBo+MhGHGhKrbWz2U=
-github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101172338-f2740e98f265/go.mod h1:v4nOw2cMJOUwUsJOliDh9+y7yB8mQp786028wKFjhQY=
+github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101174401-df56aa581c7f h1:N0sVcDVLk/yvKO730rzTJ23RT3ogsgDnT7bowwG1ks8=
+github.com/aperturerobotics/gnostic-models-lite v0.0.0-20261101174401-df56aa581c7f/go.mod h1:v4nOw2cMJOUwUsJOliDh9+y7yB8mQp786028wKFjhQY=
 github.com/aperturerobotics/json-iterator-lite v1.1.0 h1:ZLLqHhHTKYlmCAP873ras2e/yVU/THtwC+ji3tXLMMg=
 github.com/aperturerobotics/json-iterator-lite v1.1.0/go.mod h1:SvGGBv3OVxUyqO0ZxA/nvs6z3cg7NIbZ64TnbV2OISo=
-github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101172500-c434763c426b h1:6g4GThmFVdOVQn0TqB9aDbpkTPkcvhPKfvsKeuZKtwA=
-github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101172500-c434763c426b/go.mod h1:1ZMKyBjeiPLeOtSrgS2BfmwTohljAJwab1flVHg72nA=
+github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101174642-7a6593583cfd h1:VCIRKUpENwlw5dBduiN/1S9pLWg4/tSH2JVruU43r7c=
+github.com/aperturerobotics/kube-openapi-lite v0.0.0-20261101174642-7a6593583cfd/go.mod h1:bv9nZudfGUVz+36bi3nHuG2jIlKiTFkSf5bf5D0Bu30=
 github.com/aperturerobotics/protobuf-go-lite v0.19.1-0.20261028131920-f644656fc4a7 h1:LQ9mNU1oDicw/X5TAYcL7BVWtvdtCifGQ0iETHEjlC8=
 github.com/aperturerobotics/protobuf-go-lite v0.19.1-0.20261028131920-f644656fc4a7/go.mod h1:OoWp0DqYDPOCFHswO/z3H9jgEmDOwPJxxR9Meosb5zQ=
 github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5 h1:0CwZNZbxp69SHPdPJAN/hZIm0C4OItdklCFmMRWYpio=
@@ -53,8 +53,6 @@ github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRI
 github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/spf13/pflag v1.0.10 h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=
 github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
-github.com/stretchr/objx v0.5.3 h1:jmXUvGomnU1o3W/V5h2VEradbpJDwGrzugQQvL0POH4=
-github.com/stretchr/objx v0.5.3/go.mod h1:rDQraq+vQZU7Fde9LOZLr8Tax6zZvy4kuNKF+QYS+U0=
 github.com/stretchr/testify v1.12.1 h1:EuwCh5fleGS7H32xRwO3wRGT7DxrDhLAT6FF8MpWDWE=
 github.com/stretchr/testify v1.12.1/go.mod h1:MDEgiDPPsNp5cuIrHPPCyornHKgEVbtFUmoNlxoYthg=
 github.com/x448/float16 v0.8.4 h1:qLwI1I70+NjRFUR3zs1JPUCgaCXSh3SW62uAKT1mSBM=

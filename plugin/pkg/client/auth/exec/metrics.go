@@ -18,9 +18,9 @@ package exec
 
 import (
 	"errors"
+	"fmt"
 	"io/fs"
 	"os/exec"
-	"reflect"
 	"sync"
 	"time"
 
@@ -112,7 +112,7 @@ func incrementCallsMetric(err error) {
 		metrics.ExecPluginCalls.Increment(failureExitCode, pluginNotFoundError)
 
 	default: // We don't know about this error type.
-		klog.V(2).InfoS("unexpected exec plugin return error type", "type", reflect.TypeOf(err).String(), "err", err)
+		klog.V(2).InfoS("unexpected exec plugin return error type", "type", fmt.Sprintf("%T", err), "err", err)
 		metrics.ExecPluginCalls.Increment(failureExitCode, clientInternalError)
 	}
 }

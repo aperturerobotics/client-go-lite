@@ -22,8 +22,6 @@ limitations under the License.
 package v1
 
 import (
-	unsafe "unsafe"
-
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	api "k8s.io/client-go/tools/clientcmd/api"
@@ -161,18 +159,18 @@ func RegisterConversions(s *runtime.Scheme) error {
 
 func autoConvert_v1_AuthInfo_To_api_AuthInfo(in *AuthInfo, out *api.AuthInfo, s conversion.Scope) error {
 	out.ClientCertificate = in.ClientCertificate
-	out.ClientCertificateData = *(*[]byte)(unsafe.Pointer(&in.ClientCertificateData))
+	out.ClientCertificateData = in.ClientCertificateData
 	out.ClientKey = in.ClientKey
-	out.ClientKeyData = *(*[]byte)(unsafe.Pointer(&in.ClientKeyData))
+	out.ClientKeyData = in.ClientKeyData
 	out.Token = in.Token
 	out.TokenFile = in.TokenFile
 	out.Impersonate = in.Impersonate
 	out.ImpersonateUID = in.ImpersonateUID
-	out.ImpersonateGroups = *(*[]string)(unsafe.Pointer(&in.ImpersonateGroups))
-	out.ImpersonateUserExtra = *(*map[string][]string)(unsafe.Pointer(&in.ImpersonateUserExtra))
+	out.ImpersonateGroups = in.ImpersonateGroups
+	out.ImpersonateUserExtra = in.ImpersonateUserExtra
 	out.Username = in.Username
 	out.Password = in.Password
-	out.AuthProvider = (*api.AuthProviderConfig)(unsafe.Pointer(in.AuthProvider))
+	out.AuthProvider = (*api.AuthProviderConfig)(in.AuthProvider)
 	if in.Exec != nil {
 		in, out := &in.Exec, &out.Exec
 		*out = new(api.ExecConfig)
@@ -196,18 +194,18 @@ func Convert_v1_AuthInfo_To_api_AuthInfo(in *AuthInfo, out *api.AuthInfo, s conv
 func autoConvert_api_AuthInfo_To_v1_AuthInfo(in *api.AuthInfo, out *AuthInfo, s conversion.Scope) error {
 	// INFO: in.LocationOfOrigin opted out of conversion generation
 	out.ClientCertificate = in.ClientCertificate
-	out.ClientCertificateData = *(*[]byte)(unsafe.Pointer(&in.ClientCertificateData))
+	out.ClientCertificateData = in.ClientCertificateData
 	out.ClientKey = in.ClientKey
-	out.ClientKeyData = *(*[]byte)(unsafe.Pointer(&in.ClientKeyData))
+	out.ClientKeyData = in.ClientKeyData
 	out.Token = in.Token
 	out.TokenFile = in.TokenFile
 	out.Impersonate = in.Impersonate
 	out.ImpersonateUID = in.ImpersonateUID
-	out.ImpersonateGroups = *(*[]string)(unsafe.Pointer(&in.ImpersonateGroups))
-	out.ImpersonateUserExtra = *(*map[string][]string)(unsafe.Pointer(&in.ImpersonateUserExtra))
+	out.ImpersonateGroups = in.ImpersonateGroups
+	out.ImpersonateUserExtra = in.ImpersonateUserExtra
 	out.Username = in.Username
 	out.Password = in.Password
-	out.AuthProvider = (*AuthProviderConfig)(unsafe.Pointer(in.AuthProvider))
+	out.AuthProvider = (*AuthProviderConfig)(in.AuthProvider)
 	if in.Exec != nil {
 		in, out := &in.Exec, &out.Exec
 		*out = new(ExecConfig)
@@ -229,7 +227,7 @@ func Convert_api_AuthInfo_To_v1_AuthInfo(in *api.AuthInfo, out *AuthInfo, s conv
 }
 
 func autoConvert_v1_AuthProviderConfig_To_api_AuthProviderConfig(in *AuthProviderConfig, out *api.AuthProviderConfig, s conversion.Scope) error {
-	*out = *(*api.AuthProviderConfig)(unsafe.Pointer(in))
+	*out = api.AuthProviderConfig(*in)
 	return nil
 }
 
@@ -239,7 +237,7 @@ func Convert_v1_AuthProviderConfig_To_api_AuthProviderConfig(in *AuthProviderCon
 }
 
 func autoConvert_api_AuthProviderConfig_To_v1_AuthProviderConfig(in *api.AuthProviderConfig, out *AuthProviderConfig, s conversion.Scope) error {
-	*out = *(*AuthProviderConfig)(unsafe.Pointer(in))
+	*out = AuthProviderConfig(*in)
 	return nil
 }
 
@@ -253,7 +251,7 @@ func autoConvert_v1_Cluster_To_api_Cluster(in *Cluster, out *api.Cluster, s conv
 	out.TLSServerName = in.TLSServerName
 	out.InsecureSkipTLSVerify = in.InsecureSkipTLSVerify
 	out.CertificateAuthority = in.CertificateAuthority
-	out.CertificateAuthorityData = *(*[]byte)(unsafe.Pointer(&in.CertificateAuthorityData))
+	out.CertificateAuthorityData = in.CertificateAuthorityData
 	out.ProxyURL = in.ProxyURL
 	out.DisableCompression = in.DisableCompression
 	if err := Convert_Slice_v1_NamedExtension_To_Map_string_To_runtime_Object(&in.Extensions, &out.Extensions, s); err != nil {
@@ -273,7 +271,7 @@ func autoConvert_api_Cluster_To_v1_Cluster(in *api.Cluster, out *Cluster, s conv
 	out.TLSServerName = in.TLSServerName
 	out.InsecureSkipTLSVerify = in.InsecureSkipTLSVerify
 	out.CertificateAuthority = in.CertificateAuthority
-	out.CertificateAuthorityData = *(*[]byte)(unsafe.Pointer(&in.CertificateAuthorityData))
+	out.CertificateAuthorityData = in.CertificateAuthorityData
 	out.ProxyURL = in.ProxyURL
 	out.DisableCompression = in.DisableCompression
 	if err := Convert_Map_string_To_runtime_Object_To_Slice_v1_NamedExtension(&in.Extensions, &out.Extensions, s); err != nil {
@@ -374,8 +372,14 @@ func Convert_api_Context_To_v1_Context(in *api.Context, out *Context, s conversi
 
 func autoConvert_v1_ExecConfig_To_api_ExecConfig(in *ExecConfig, out *api.ExecConfig, s conversion.Scope) error {
 	out.Command = in.Command
-	out.Args = *(*[]string)(unsafe.Pointer(&in.Args))
-	out.Env = *(*[]api.ExecEnvVar)(unsafe.Pointer(&in.Env))
+	out.Args = in.Args
+	out.Env = nil
+	if in.Env != nil {
+		out.Env = make([]api.ExecEnvVar, len(in.Env))
+		for i := range in.Env {
+			out.Env[i] = api.ExecEnvVar(in.Env[i])
+		}
+	}
 	out.APIVersion = in.APIVersion
 	out.InstallHint = in.InstallHint
 	out.ProvideClusterInfo = in.ProvideClusterInfo
@@ -390,8 +394,14 @@ func Convert_v1_ExecConfig_To_api_ExecConfig(in *ExecConfig, out *api.ExecConfig
 
 func autoConvert_api_ExecConfig_To_v1_ExecConfig(in *api.ExecConfig, out *ExecConfig, s conversion.Scope) error {
 	out.Command = in.Command
-	out.Args = *(*[]string)(unsafe.Pointer(&in.Args))
-	out.Env = *(*[]ExecEnvVar)(unsafe.Pointer(&in.Env))
+	out.Args = in.Args
+	out.Env = nil
+	if in.Env != nil {
+		out.Env = make([]ExecEnvVar, len(in.Env))
+		for i := range in.Env {
+			out.Env[i] = ExecEnvVar(in.Env[i])
+		}
+	}
 	out.APIVersion = in.APIVersion
 	out.InstallHint = in.InstallHint
 	out.ProvideClusterInfo = in.ProvideClusterInfo
@@ -409,7 +419,7 @@ func Convert_api_ExecConfig_To_v1_ExecConfig(in *api.ExecConfig, out *ExecConfig
 }
 
 func autoConvert_v1_ExecEnvVar_To_api_ExecEnvVar(in *ExecEnvVar, out *api.ExecEnvVar, s conversion.Scope) error {
-	*out = *(*api.ExecEnvVar)(unsafe.Pointer(in))
+	*out = api.ExecEnvVar(*in)
 	return nil
 }
 
@@ -419,7 +429,7 @@ func Convert_v1_ExecEnvVar_To_api_ExecEnvVar(in *ExecEnvVar, out *api.ExecEnvVar
 }
 
 func autoConvert_api_ExecEnvVar_To_v1_ExecEnvVar(in *api.ExecEnvVar, out *ExecEnvVar, s conversion.Scope) error {
-	*out = *(*ExecEnvVar)(unsafe.Pointer(in))
+	*out = ExecEnvVar(*in)
 	return nil
 }
 
